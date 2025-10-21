@@ -1,0 +1,533 @@
+/* --- Importação da Nova Fonte --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+/* --- Configuração Global (Paleta Rebalanceada) --- */
+:root {
+    --cor-primaria: #111111; /* Preto 'imponente' (Títulos) */
+    --cor-destaque: #F97316;  /* Laranja vibrante (Botões, links) */
+    --cor-fundo: #FFFFFF;     /* Base Branca (Elegante) */
+    --cor-fundo-alt: #F4F4F5; /* Cinza claro (Seções alternadas) */
+    --cor-texto: #18181B;     /* Texto principal (Cinza super escuro) */
+    --cor-texto-secundario: #52525B; /* Texto cinza (Subtítulos) */
+    --cor-dark-section: #18181B; /* Cinza escuro para contraste (Footer/CTA) */
+    --cor-branca: #FFFFFF;
+}
+
+body {
+    /* Fonte padrão (Roboto) para textos corridos */
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* --- Nova Fonte para Títulos e Logo --- */
+h1, h2, h3, h4, .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Deixa os títulos imponentes */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Header (Estilo Allana: BRANCO, Fixo, com Desfoque) --- */
+.header {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+.nav-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover, .nav-menu a.ativo {
+    color: var(--cor-destaque);
+}
+
+/* --- Seção Hero (Estilo Allana: Tela Cheia com Swiper) --- */
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    color: var(--cor-branca);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+}
+
+.hero-overlay h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-overlay p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif; /* Garante que o parágrafo use a fonte de texto */
+    font-weight: 400;
+}
+
+/* --- Botões (Nova Paleta) --- */
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--cor-destaque);
+    color: var(--cor-branca);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-family: 'Roboto', sans-serif; /* Usa a fonte de texto */
+    font-weight: 500;
+}
+
+.cta-button:hover {
+    background-color: #EA580C;
+    transform: translateY(-2px);
+}
+
+.cta-button.secundario {
+    background-color: transparent;
+    border: 2px solid var(--cor-destaque);
+    color: var(--cor-destaque);
+    margin-left: 15px;
+}
+.cta-button.secundario:hover {
+    background-color: var(--cor-destaque);
+    color: var(--cor-branca);
+}
+
+/* --- Seções Padrão (Minimalistas) --- */
+.secao {
+    padding: 80px 0;
+    text-align: center;
+}
+main section:first-of-type {
+    padding-top: calc(80px + 70px);
+}
+
+.secao-titulo {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: var(--cor-primaria);
+}
+
+.secao-subtitulo {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    color: var(--cor-texto-secundario);
+}
+
+/* --- MUDANÇA: Fundo cinza para seção de serviços --- */
+#servicos-prev {
+    background-color: var(--cor-fundo-alt);
+}
+
+/* --- Prévia de Serviços (Cards) --- */
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.servico-card {
+    background-color: var(--cor-fundo); /* Cards BRANCOS */
+    border-radius: 8px;
+    border: 1px solid #E4E4E7;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    /* Sombra mais pronunciada para 'flutuar' sobre o fundo cinza */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.servico-card:hover {
+    border-color: var(--cor-destaque);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.servico-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.servico-card-conteudo {
+    padding: 30px;
+}
+
+.servico-card h3 {
+    font-size: 1.5rem;
+    color: var(--cor-primaria);
+    margin-top: 0;
+}
+
+/* --- CTA para Calculadora (Seção de Contraste) --- */
+.cta-calculadora {
+    background-color: var(--cor-dark-section);
+    color: var(--cor-branca);
+}
+
+.cta-calculadora .secao-titulo {
+    color: var(--cor-branca);
+}
+
+.cta-calculadora .secao-subtitulo {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-calculadora .cta-button {
+    background-color: var(--cor-destaque);
+}
+.cta-calculadora .cta-button:hover {
+    background-color: #EA580C;
+}
+
+/* --- Depoimentos --- */
+.depoimento {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--cor-texto-secundario);
+}
+
+.depoimento-autor {
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--cor-primaria);
+}
+
+/* --- Footer (Rodapé) --- */
+.footer {
+    background-color: var(--cor-dark-section);
+    color: #E4E4E7;
+    padding: 50px 0;
+    font-size: 0.9rem;
+}
+
+.footer .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.footer h4 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--cor-destaque);
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+.footer ul li {
+    margin-bottom: 10px;
+}
+.footer ul li a {
+    color: var(--cor-branca);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer ul li a:hover {
+    color: var(--cor-destaque);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #3f3f46;
+    font-size: 0.8rem;
+    color: var(--cor-texto-secundario);
+}
+
+/* --- Estilos da Página da Calculadora --- */
+
+/* Hero simples para páginas internas */
+.hero-pagina-interna {
+    background-color: var(--cor-fundo-alt);
+    padding-top: calc(80px + 70px); /* Compensa header fixo */
+    padding-bottom: 40px;
+}
+.hero-pagina-interna .secao-titulo {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+.hero-pagina-interna .secao-subtitulo {
+    font-size: 1.2rem;
+    color: var(--cor-texto-secundario);
+}
+
+/* Container da calculadora com 2 colunas */
+.calculadora-container {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 coluna em mobile */
+    gap: 40px;
+}
+
+/* Media query para telas maiores (desktop) */
+@media (min-width: 992px) {
+    .calculadora-container {
+        grid-template-columns: 1fr 1fr; /* 2 colunas em desktop */
+    }
+}
+
+.calculadora-titulo {
+    font-size: 1.8rem;
+    color: var(--cor-primaria);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--cor-destaque);
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+/* Estilos do Formulário */
+.calculadora-form, .calculadora-lateral {
+    text-align: left;
+}
+
+.form-grupo {
+    margin-bottom: 20px;
+}
+
+.form-grupo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-grupo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--cor-texto-secundario);
+}
+
+.form-grupo input[type="number"],
+.form-grupo input[type="text"],
+.form-grupo input[type="tel"],
+.form-grupo select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #D4D4D8; /* cinza claro */
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box; /* Garante que o padding não estoure a largura */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-grupo input:focus,
+.form-grupo select:focus {
+    outline: none;
+    border-color: var(--cor-destaque);
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.3); /* Sombra laranja sutil */
+}
+
+.calculadora-form .cta-button {
+    width: 100%;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* Estilos dos Resultados */
+.calculadora-resultados {
+    background-color: var(--cor-fundo-alt);
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.resultado-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    color: var(--cor-texto-secundario);
+    padding: 15px 0;
+    border-bottom: 1px solid #D4D4D8;
+}
+
+.resultado-item span {
+    margin-right: 15px;
+}
+
+.resultado-item strong {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+
+.resultado-item.preco strong {
+    font-size: 2rem;
+    color: var(--cor-destaque); /* Preço final em laranja */
+}
+
+.aviso-legal {
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Formulário de Cotação (abaixo dos resultados) */
+.form-cotacao {
+    background-color: var(--cor-fundo);
+    border: 1px solid #E4E4E7;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.form-cotacao .cta-button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/* --- Estilos da Página Sobre Nós --- */
+
+#secao-sobre {
+    padding-bottom: 40px; /* Reduz o espaçamento inferior */
+}
+
+/* Grid de Imagem + Texto */
+.sobre-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 coluna mobile */
+    gap: 40px;
+    align-items: center;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .sobre-intro-grid {
+        grid-template-columns: 1fr 1fr; /* 2 colunas desktop */
+    }
+}
+
+.sobre-imagem img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.sobre-texto h2 {
+    font-size: 2.2rem;
+    color: var(--cor-primaria);
+    margin-bottom: 20px;
+}
+
+.sobre-texto p {
+    font-size: 1.1rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 15px;
+}
+
+/* Seção Missão, Visão e Valores */
+#secao-valores {
+    background-color: var(--cor-fundo-alt); /* Fundo cinza claro */
+}
+
+.valores-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 coluna mobile */
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .valores-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas desktop */
+    }
+}
+
+/* Cards de Missão/Visão/Valores */
+.valor-card {
+    background-color: var(--cor-branca);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #E4E4E7;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.valor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+.valor-card h3 {
+    font-size: 1.5rem;
+    color: var(--cor-destaque); /* Laranja */
+    margin-bottom: 15px;
+}
+
+.valor-card p {
+    font-size: 1rem;
+    color: var(--cor-texto-secundario);
+    line-height: 1.7;
+}

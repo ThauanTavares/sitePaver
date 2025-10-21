@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Orçamento - RB Paver</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">RB PAVER</a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="tipos-de-pavers.html">Tipos de Pavers</a></li>
+                    <li><a href="portfolio.html">Portfólio</a></li>
+                    <li><a href="calculadora.html" class="ativo"><b>Orçamento Online</b></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="secao hero-pagina-interna">
+            <div class="container">
+                <h1 class="secao-titulo">Simule seu Orçamento</h1>
+                <p class="secao-subtitulo">Calcule o material e o custo aproximado do seu projeto em instantes.</p>
+            </div>
+        </section>
+
+        <section class="secao secao-calculadora">
+            <div class="container calculadora-container">
+
+                <div class="calculadora-form" id="calculadora-form">
+                    <h2 class="calculadora-titulo">1. Insira os dados do projeto</h2>
+                    
+                    <div class="form-grupo-grid">
+                        <div class="form-grupo">
+                            <label for="largura">Largura (em metros)</label>
+                            <input type="number" id="largura" placeholder="Ex: 5.5" min="0">
+                        </div>
+                        <div class="form-grupo">
+                            <label for="comprimento">Comprimento (em metros)</label>
+                            <input type="number" id="comprimento" placeholder="Ex: 10" min="0">
+                        </div>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="tipo-uso">Tipo de Uso (Tráfego)</label>
+                        <select id="tipo-uso">
+                            <option value="leve">Leve (Pessoas, jardins)</option>
+                            <option value="medio">Médio (Carros de passeio)</option>
+                            <option value="pesado">Pesado (Caminhões, pátio industrial)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="tipo-paver">Tipo de Paver</label>
+                        <select id="tipo-paver">
+                            <option value="retangular">Paver Retangular (Clássico)</option>
+                            <option value="hexagonal">Paver Hexagonal (Bloquete)</option>
+                            <option value="onda">Paver "S" / Onda (Alto Travamento)</option>
+                        </select>
+                    </div>
+
+                    <button type="button" id="btn-calcular" class="cta-button">Calcular Agora</button>
+                </div>
+
+                <div class="calculadora-lateral">
+                    
+                    <div class="calculadora-resultados" id="resultados-box">
+                        <h2 class="calculadora-titulo">2. Sua Estimativa</h2>
+                        <div class="resultado-item">
+                            <span>Área Total</span>
+                            <strong id="res-area">0 m²</strong>
+                        </div>
+                        <div class="resultado-item">
+                            <span>Peças (Aprox.)</span>
+                            <strong id="res-pecas">0</strong>
+                        </div>
+                        <div class="resultado-item preco">
+                            <span>Preço Estimado (Material + Mão de Obra)</span>
+                            <strong id="res-preco">R$ 0,00</strong>
+                        </div>
+                        <p class="aviso-legal">
+                            *Este é um valor aproximado. O preço final será confirmado após visita técnica.
+                        </p>
+                    </div>
+
+                    <div class="form-cotacao" id="form-cotacao-box">
+                        <h2 class="calculadora-titulo">3. Enviar Cotação</h2>
+                        <p>Gostou da estimativa? Envie para um vendedor agora.</p>
+                        <form id="form-envio-whatsapp">
+                            <div class="form-grupo">
+                                <label for="nome-cliente">Seu Nome</label>
+                                <input type="text" id="nome-cliente" placeholder="Digite seu nome" required>
+                            </div>
+                            <div class="form-grupo">
+                                <label for="whatsapp-cliente">Seu WhatsApp</label>
+                                <input type="tel" id="whatsapp-cliente" placeholder="(41) 99999-9999" required>
+                            </div>
+                            <button type="submit" class="cta-button">Enviar Cotação por WhatsApp</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <h4>RB PAVER</h4>
+                <p>Especialistas em Pavers e Blocos de Concreto em Curitiba e Região Metropolitana.</p>
+            </div>
+            <div>
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="tipos-de-pavers.html">Tipos de Pavers</a></li>
+                    <li><a href="portfolio.html">Portfólio</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contato</h4>
+                <p>
+                    <strong>Telefone/WhatsApp:</strong><br>
+                    (41) 99885-3612
+                </p>
+                <p>
+                    <strong>Endereço:</strong><br>
+                    R. Arcidio Claudino Barbosa, 22839 – Agaraú, São José dos Pinhais – PR
+                </p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 RB Paver. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
