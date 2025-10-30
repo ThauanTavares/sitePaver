@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Site RB Paver (Design Minimalista) carregado.");
 
     // --- Lógica 1: Inicialização do Swiper (Apenas para a Home) ---
-    // Esta lógica é inspirada no script do site Allana
-    // Verificamos se o elemento .swiper existe antes de iniciá-lo
     const swiperElement = document.querySelector('.swiper');
     if (swiperElement) {
         const swiper = new Swiper('.swiper', {
@@ -30,8 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Seleciona os elementos do formulário
         const inputLargura = document.getElementById('largura');
         const inputComprimento = document.getElementById('comprimento');
-        const selectUso = document.getElementById('tipo-uso');
-        const selectPaver = document.getElementById('tipo-paver');
+        const selectModelo = document.getElementById('modelo-paver'); // <- MUDOU AQUI
         const btnCalcular = document.getElementById('btn-calcular');
 
         // Seleciona os campos de resultado
@@ -42,16 +39,25 @@ document.addEventListener('DOMContentLoaded', () => {
         // Seleciona o formulário de envio do WhatsApp
         const formWhatsapp = document.getElementById('form-envio-whatsapp');
         
-        // --- VALORES APROXIMADOS (Como você pediu) ---
-        const precosBaseM2 = {
-            'leve': 75.50,   // Ex: R$ 75,50/m² (jardim)
-            'medio': 95.00,  // Ex: R$ 95,00/m² (carros)
-            'pesado': 120.00 // Ex: R$ 120,00/m² (caminhões)
-        };
-        const pecasPorM2 = {
-            'retangular': 50, // 50 peças por m²
-            'hexagonal': 28,  // 28 peças por m²
-            'onda': 39,       // 39 peças por m²
+        // --- NOVA LÓGICA DE DADOS ---
+        // Tabela de dados para cada modelo de paver
+        const dadosModelos = {
+            'p6_35': {
+                precoM2: 75.50,  // Preço antigo 'Leve'
+                pecasM2: 50      // Todos são 10x20 (retangular)
+            },
+            'p8_35': {
+                precoM2: 95.00,  // Preço antigo 'Médio'
+                pecasM2: 50
+            },
+            'p8_50': {
+                precoM2: 120.00, // Preço antigo 'Pesado'
+                pecasM2: 50
+            },
+            'p10_50': {
+                precoM2: 120.00, // Preço antigo 'Pesado' (pode ajustar se for mais caro)
+                pecasM2: 50
+            }
         };
         
         // Função para formatar como Moeda (R$)
@@ -59,18 +65,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
         
-        // Função principal do cálculo
+        // Função principal do cálculo (ATUALIZADA)
         function calcularEstimativa() {
             const largura = parseFloat(inputLargura.value) || 0;
             const comprimento = parseFloat(inputComprimento.value) || 0;
-            const tipoUso = selectUso.value;
-            const tipoPaver = selectPaver.value;
+            const modeloSelecionado = selectModelo.value; // Ex: 'p6_35'
 
             const area = largura * comprimento;
             
-            // Cálculos com base nos valores aproximados
-            const precoEstimado = area * precosBaseM2[tipoUso];
-            const pecasEstimadas = Math.ceil(area * pecasPorM2[tipoPaver]); // Arredonda para cima
+            // Pega os dados corretos da tabela
+            const dadosDoModelo = dadosModelos[modeloSelecionado];
+            
+            // Cálculos
+            const precoEstimado = area * dadosDoModelo.precoM2;
+            const pecasEstimadas = Math.ceil(area * dadosDoModelo.pecasM2); // Arredonda para cima
 
             // Atualiza os resultados na tela
             resArea.textContent = `${area.toFixed(2)} m²`;
@@ -81,8 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Adiciona o "escutador" ao botão
         btnCalcular.addEventListener('click', calcularEstimativa);
         
-        // --- Lógica 3: Envio do Formulário WhatsApp ---
-        // Inspirado na lógica do site Allana
+        // --- Lógica 3: Envio do Formulário WhatsApp (ATUALIZADA) ---
         
         formWhatsapp.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -99,21 +106,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 area: resArea.textContent,
                 pecas: resPecas.textContent,
                 preco: resPreco.textContent,
-                uso: selectUso.options[selectUso.selectedIndex].text,
-                paver: selectPaver.options[selectPaver.selectedIndex].text,
+                // Pega o TEXTO da opção selecionada (Ex: "Paver 10x20x06 35 Mpa...")
+                modelo: selectModelo.options[selectModelo.selectedIndex].text,
             };
 
-            // Monta a mensagem
+            // Monta a mensagem (ATUALIZADA)
             const mensagem = `Olá, RB Paver!
 Meu nome é *${nomeCliente}* (${whatsappCliente}).
 Gostaria de um orçamento baseado na simulação do site:
 
 *Projeto:*
 - Área Total: *${dadosOrcamento.area}*
-- Tipo de Uso: *${dadosOrcamento.uso}*
-- Tipo de Paver: *${dadosOrcamento.paver}*
+- Modelo de Paver: *${dadosOrcamento.modelo}*
 
-*Estimativa:*
+*Estimativa (Material):*
 - Peças (Aprox.): *${dadosOrcamento.pecas}*
 - Preço (Aprox.): *${dadosOrcamento.preco}*
 
